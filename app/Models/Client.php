@@ -12,4 +12,11 @@ class Client extends Model
         'phone',
         'address',
     ];
+
+
+    public function cases()
+    {
+        return $this->hasMany(CaseModel::class, 'client_id');
+    }
+    
 }

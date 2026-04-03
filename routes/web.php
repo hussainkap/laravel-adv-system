@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\CaseController;
+use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\DashboardController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,13 +29,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-use App\Http\Controllers\Admin\ClientController;
+
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('clients', ClientController::class);
+    Route::resource('cases', CaseController::class);
 });
 
-use App\Http\Controllers\Admin\DashboardController;
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
