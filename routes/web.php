@@ -1,15 +1,30 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Admin\CaseController;
-use App\Http\Controllers\Admin\ClientController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\{CaseController, ClientController, DashboardController};
+use App\Http\Controllers\{ProfileController, RegisterController};
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+route::controller(RegisterController::class)->group(function () {
+    route::get('/register', 'showRegistrationForm')->name('register');
+    route::post('/register', 'register');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
